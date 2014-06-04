@@ -77,8 +77,7 @@ public class CassandraDAO <T extends Model> {
 	}
 
 	public ResultSet<T> findAll(Integer pageSize, String selectClause, ConsistencyLevel cl) throws CassandraDAOException {
-		String cql = selectCql(selectClause, null, null, null);
-		return new CqlPagingResultSet<T>(this, tableMapping, cql, pageSize, cl);
+		return select(selectClause, null, null, null, cl);
 	}
 	
 	public ResultSet<T> find(String whereClause, ConsistencyLevel cl) throws CassandraDAOException {
