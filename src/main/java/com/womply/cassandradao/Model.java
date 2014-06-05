@@ -3,6 +3,7 @@ package com.womply.cassandradao;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -46,6 +47,8 @@ public abstract class Model {
 				value = row.getBool(index);
 			else if(colMapping.getSetterParamClass() == Set.class)
 				value = row.getSet(index, colMapping.getSetterParamGenericsClass());
+			else if(colMapping.getSetterParamClass() == List.class)
+				value = row.getList(index, colMapping.getSetterParamGenericsClass());
 			else
 				throw new CassandraDAOException("Could not find type!");
 
