@@ -24,6 +24,21 @@ class User extends com.womply.cassandradao.Model {
 
   // Getters and setters
 }
+```
+
+By default, cassandradao converts User to "users" as the table name.
+To override the table name, simply add the @Table annotation.
+Use the @Column annotation to override your column name.
+
+````java
+@Table(name = "table_name")
+class User extends com.womply.cassandradao.Model {
+  @Column(name = "user_name")
+  private String username;
+  private String fullName;
+
+  // Getters and setters
+}
 ````
 
 To create a "adhoc" DAO for this model/table you would...
